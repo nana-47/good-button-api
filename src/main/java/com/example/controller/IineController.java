@@ -34,12 +34,7 @@ public class IineController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/iine", method = RequestMethod.GET)
-	public Map<String, Integer> iine(Integer articleId) {
-
-		// setの1行はログイン機能と連携したら消す
-		session.setAttribute("userId", 2);
-		// 関連テーブルにも同時insertするのでuserIDを取得
-		Integer userId = (Integer) session.getAttribute("userId");
+	public Map<String, Integer> iine(Integer articleId, Integer userId) {
 
 		// いいね履歴に応じていいねカウントを処理
 		Iine iine = new Iine();
