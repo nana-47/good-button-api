@@ -3,8 +3,6 @@ package com.example.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,18 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.Iine;
-import com.example.service.IineService;
+import com.example.service.IineMapperService;
 
 @Controller
 @CrossOrigin
 @RequestMapping("/api")
 public class IineController {
 
-	@Autowired
-	private IineService iineService;
+//  Mybatis使用中のため一旦コメントアウト
+//	@Autowired
+//	private IineService iineService;
 
 	@Autowired
-	private HttpSession session;
+	private IineMapperService iineMapperService;
 
 	/**
 	 * 
@@ -38,7 +37,7 @@ public class IineController {
 
 		// いいね履歴に応じていいねカウントを処理
 		Iine iine = new Iine();
-		iine = iineService.addIine(articleId, userId);
+		iine = iineMapperService.addIine(articleId, userId);
 
 		// JSON用に情報を詰める
 		Map<String, Integer> iineMap = new HashMap<>();
@@ -57,7 +56,7 @@ public class IineController {
 	public Map<String, Integer> showIine(Integer articleId) {
 
 		// 投稿に対するいいねの情報のみ取得
-		Iine iine = iineService.findIine(articleId);
+		Iine iine = iineMapperService.findIine(articleId);
 
 		Map<String, Integer> iineMap = new HashMap<>();
 		iineMap.put("count", iine.getCount());
