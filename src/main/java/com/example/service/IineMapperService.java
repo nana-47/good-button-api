@@ -28,7 +28,7 @@ public class IineMapperService {
 		iine = iineMapper.findByArticleId(articleId);
 
 		// すでにいいねされていた場合
-		if (iine.getId() != null) {
+		if (iine != null) {
 
 			// 該当の投稿に既に同一ユーザーがいいねしているかどうかを判定
 			Iine iine2 = new Iine();

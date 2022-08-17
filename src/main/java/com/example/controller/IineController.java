@@ -59,7 +59,13 @@ public class IineController {
 		Iine iine = iineMapperService.findIine(articleId);
 
 		Map<String, Integer> iineMap = new HashMap<>();
-		iineMap.put("count", iine.getCount());
+
+		if (iine == null) {
+			iineMap.put("count", 0);
+		} else {
+			iineMap.put("count", iine.getCount());
+		}
+
 		return iineMap;
 	}
 }
