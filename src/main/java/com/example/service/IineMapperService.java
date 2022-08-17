@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.dao.IineMapper;
 import com.example.domain.Iine;
-import com.example.mapper.IineMapper;
 
 @Transactional
 @Service
