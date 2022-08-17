@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.IineMapper">
+	<insert id="insertIine" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO iines (article_id,count) VALUES (#{articleId}, #{count}) returning id
+	</insert>
+	<insert id="insertIineAndUser">
+		INSERT INTO iine_user (iine_id,user_id) VALUES (#{iineId}, #{userId})
+	</insert>
+	<select id="findByArticleIdAndUserId" resultType="com.example.domain.Iine">
+		SELECT i.id,i.article_id,i.count FROM (SELECT i.id,i.article_id,i.count FROM iines AS i WHERE i.article_id=#{articleId}) AS i JOIN (SELECT iu.iine_id,iu.user_id FROM iine_user AS iu WHERE iu.user_id=#{userId}) AS iu ON i.id = iu.iine_id
+	</select>
+	<select id="findByArticleId" resultType="com.example.domain.Iine">
+		SELECT id,article_id,count FROM iines WHERE article_id=#{articleId}
+	</select>
+	<update id="updateCount">
+		UPDATE iines SET count =#{count} WHERE article_id=#{articleId}
+	</update>
+	<delete id="deleteIine">
+		DELETE FROM iine_user WHERE iine_id=#{iineId} AND user_id=#{userId}
+	</delete>
+</mapper>
