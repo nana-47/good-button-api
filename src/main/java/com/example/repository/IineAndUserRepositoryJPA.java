@@ -21,8 +21,8 @@ public interface IineAndUserRepositoryJPA extends JpaRepository<IineAndUserJPA, 
 	 * @return
 	 * 
 	 */
-	@Query(value = "INSERT INTO iine_user (iine_id,user_id) VALUES (:iineId, :userId)", nativeQuery = true)
-	void insertIineAndUser(@Param("iineId") Integer iineId, @Param("userId") Integer userId);
+	@Query(value = "INSERT INTO iine_user (iine_id,user_id) VALUES (?1, ?2)", nativeQuery = true)
+	void insertIineAndUser(Integer iineId, Integer userId);
 
 	/**
 	 * いいねを押したのが2回目だった時に関連テーブルから情報をDELETEする

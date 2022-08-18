@@ -20,8 +20,8 @@ public interface IineRepositoryJPA extends JpaRepository<IineJPA, Integer> {
 	 * @return id
 	 * 
 	 */
-	@Query(value = "insert into iines (article_id,count) values (:articleId, :count)", nativeQuery = true)
-	void saveIine(@Param("articleId") Integer articleId, @Param("count") Integer count);
+	@Query(value = "insert into iines (article_id,count) values (?1, ?2) returning id", nativeQuery = true)
+	Integer insertIine(Integer articleId, Integer count);
 
 	/**
 	 * 該当の投稿が既にいいねされているか確認と情報の呼び出し

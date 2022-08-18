@@ -77,8 +77,7 @@ public class IineServiceJPA {
 //			IineJPA iineJpa = new IineJPA();
 //			iineJpa.setArticleId(articleId);
 //			iineJpa.setCount(1);
-			iineRepositoryJPA.saveIine(articleId, 1);
-			Integer iineId = 1;
+			Integer iineId = iineRepositoryJPA.insertIine(articleId, 1);
 			iineAndUserRepositoryJPA.insertIineAndUser(iineId, userId);
 		}
 		System.out.println("全判定実行済み");
