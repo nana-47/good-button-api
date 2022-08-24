@@ -8,8 +8,6 @@ public class Iine {
 	private Integer articleId;
 	/** いいね数のカウント */
 	private Integer count;
-	/** いいねしたユーザーのアカウント名 */
-	private String profileName;
 
 	public Integer getId() {
 		return id;
@@ -35,18 +33,9 @@ public class Iine {
 		this.count = count;
 	}
 
-	public String getProfileName() {
-		return profileName;
-	}
-
-	public void setProfileName(String profileName) {
-		this.profileName = profileName;
-	}
-
 	@Override
 	public String toString() {
-		return "Iine [id=" + id + ", articleId=" + articleId + ", count=" + count + ", profileName=" + profileName
-				+ "]";
+		return "Iine [id=" + id + ", articleId=" + articleId + ", count=" + count + "]";
 	}
 
 }
