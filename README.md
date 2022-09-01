@@ -16,12 +16,14 @@ id SERIAL PRIMARY KEY, <br>
 article_id integer NOT NULL,<br>
 count integer NOT NULL 	<br>					
 );<br>
+・create index index_article on iines (article_id);<br>
 ■いいねとユーザー情報の関連テーブル<br>
 drop table if exists iine_user cascade;	<br>		
 CREATE TABLE iine_user (<br> 
 iine_id integer NOT NULL,<br>
 user_id integer NOT NULL	<br>
 );<br>
+create index index_user on iine_user (user_id);<br>
 <br>
 【仕様】<br>
 ・初めていいねする場合はカウントが＋1されます<br>
