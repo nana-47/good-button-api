@@ -16,7 +16,7 @@ id SERIAL PRIMARY KEY, <br>
 article_id integer NOT NULL,<br>
 count integer NOT NULL 	<br>					
 );<br>
-・create index index_article on iines (article_id);<br>
+create index index_article on iines (article_id);<br>
 ■いいねとユーザー情報の関連テーブル<br>
 drop table if exists iine_user cascade;	<br>		
 CREATE TABLE iine_user (<br> 
